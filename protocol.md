@@ -25,6 +25,7 @@ Success:
 ```json
 {
   "status": "success",
+  "workspaceRoot": "/home/ana/shop",
   "edits": [ { "file": "src/Foo.cs", "start": {...}, "end": {...}, "newText": "count" } ],
   "warnings": [ { "code": "trivia-moved", "message": "...", "location": {...} } ],
   "commit": { "subject": "...", "body": "...", "trailer": "Refactor: ..." }
@@ -36,6 +37,7 @@ Refusal:
 ```json
 {
   "status": "refused",
+  "workspaceRoot": "/home/ana/shop",
   "reasons": [ {
     "code": "non-local-control-flow",
     "message": "The selection contains `continue`, which would have no enclosing loop inside the lambda.",
@@ -44,6 +46,9 @@ Refusal:
   } ]
 }
 ```
+
+Every `file` in a result is relative to `workspaceRoot` and uses `/` as the separator on every OS, so results are the same on every machine.
+`workspaceRoot` is absolute, in the OS's native form; clients that need absolute paths join it with `file`.
 
 Reason codes are stable.
 Messages may change.

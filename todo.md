@@ -4,7 +4,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Decisions needed
 
-- [ ] Decide whether JSON results use workspace-relative or absolute file paths.
 - [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
 - [ ] Decide how to cite language specifications in tests (which edition and numbering).
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
@@ -45,6 +44,7 @@ Still unchecked:
 
 ## C#: not yet implemented
 
+- [ ] Report workspace-relative paths with `/` and a top-level `workspaceRoot` in results (see protocol.md); results currently use Roslyn's absolute `FilePath`.
 - [ ] Extract IIFE.
 - [ ] Batch mode (`batch`, JSONL, snapshot semantics, conflict detection, combined re-binding check).
 - [ ] MCP server (`riktig-cs mcp`).
