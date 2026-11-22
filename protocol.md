@@ -48,6 +48,11 @@ Refusal:
 Reason codes are stable.
 Messages may change.
 
+Each language defines its own reason codes, because the hazards differ by language.
+The codes listed in the spec are examples, not a shared set every language must use.
+Each language repo is the source of truth for its codes, and documents them where agents and `explain_refusal` can find them.
+Only `internal-verification-failed` is common to all languages (see [principles.md](principles.md)).
+
 ## Batch mode
 
 Input: JSON Lines, one request per line.

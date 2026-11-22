@@ -37,6 +37,8 @@ Comments, documentation, and string literals are **not** updated (see [limitatio
 - Python: `global`/`nonlocal`, class-body scope rules, comprehension scopes, `__all__`, keyword arguments, dynamic attribute access.
 - Swaps and collisions in batch mode (see [protocol.md](../protocol.md)).
 
-## Refusal reasons (initial)
+## Example refusal reasons
 
-`no-symbol`, `not-renameable`, `invalid-identifier`, `binding-would-change`, `conflicting-declaration`, `dynamic-access-possible` (Python), `preprocessor-region` (see limitations), `internal-verification-failed`.
+Each language defines its own codes (see [protocol.md](../protocol.md)); these are examples.
+
+`no-symbol`, `not-renameable`, `invalid-identifier`, `binding-would-change`, `conflicting-declaration`, `dynamic-access-possible`, `preprocessor-region` (see limitations), `internal-verification-failed`.
