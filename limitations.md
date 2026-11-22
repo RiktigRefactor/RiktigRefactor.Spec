@@ -17,6 +17,13 @@ It cannot detect all such cases.
 Rename updates symbols and their references.
 It does **not** update comments, documentation, or string literals.
 
+## Rename: names captured as strings change
+
+Some language features turn a name into a string at compile time: C#'s `nameof`, `[CallerMemberName]`, and `[CallerArgumentExpression]`.
+A rename changes those strings, by design, so they keep matching the source.
+For example, renaming `customer` to `client` in `ArgumentNullException.ThrowIfNull(customer)` changes the exception's parameter name from `"customer"` to `"client"`.
+Code that depends on the exact text, such as tests that compare error messages or tools that parse logs, may see a difference.
+
 ## Conditional compilation
 
 `#if` (C#) and preprocessor conditionals/macros spanning a selection (C++) are **not supported** for now.
