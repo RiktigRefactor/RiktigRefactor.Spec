@@ -4,7 +4,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Decisions needed
 
-- [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
 
 ## Pending pull requests
 
