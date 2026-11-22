@@ -1,0 +1,7 @@
+* -text
+*.verified.* text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
