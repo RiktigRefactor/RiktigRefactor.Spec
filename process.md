@@ -22,6 +22,8 @@ GitHub Actions on every commit: build, full test suite, naive-implementation mut
 
 - Versions follow [Semantic Versioning](https://semver.org/).
   Only incompatible protocol changes are major versions.
+- A new refusal code is not a breaking change: clients must handle codes they don't recognize.
+  It is a minor version, and the release notes list each new code with a one-line meaning.
 - Every commit to `main` produces a prerelease, versioned `<next version>-ci.<run number>`.
 - `<next version>` is worked out from the [commit notation](CONTRIBUTING.md) since the last release:
   any uppercase `F` commit (including a new refusal code) means a minor version, any other uppercase commit means a patch, and lowercase commits alone mean no release.

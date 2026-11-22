@@ -52,6 +52,7 @@ Every `file` in a result is relative to `workspaceRoot` and uses `/` as the sepa
 
 Reason codes are stable.
 Messages may change.
+New codes may be added in any minor version, so clients must handle codes they don't recognize (see [Releases](process.md#releases)).
 
 Each language defines its own reason codes, because the hazards differ by language.
 The codes listed in the spec are examples, not a shared set every language must use.
