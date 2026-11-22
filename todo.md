@@ -4,7 +4,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Decisions needed
 
-- [ ] Decide whether a rename that changes a `[CallerMemberName]` or `[CallerArgumentExpression]` value is a behavior change (refuse or warn) or intended, like `nameof`.
 - [ ] Decide whether JSON results use workspace-relative or absolute file paths.
 - [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
 - [ ] Decide how to cite language specifications in tests (which edition and numbering).
