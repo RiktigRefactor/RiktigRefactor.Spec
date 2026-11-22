@@ -36,6 +36,7 @@ The goal is to cover every language people care about.
 - [commits.md](commits.md) — commit message generation
 - [limitations.md](limitations.md) — what is out of scope
 - [process.md](process.md) — testing, fuzzing, releases, packaging, telemetry
+- [CONTRIBUTING.md](CONTRIBUTING.md) — commit conventions
 
 ## License
 
