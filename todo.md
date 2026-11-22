@@ -8,7 +8,6 @@ Everything that still needs to be considered or addressed, across all repos.
 - [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
 - [ ] Decide how to cite language specifications in tests (which edition and numbering).
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
-- [ ] Decide how each release's next version is chosen (manual, or derived from commit notation).
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
 - [ ] Decide whether renaming an enum member is a behavior change: it changes `ToString()` and `Enum.Parse` results.
   The `basic/enum-member` case currently accepts it.
@@ -79,6 +78,7 @@ Still unchecked:
 
 ## Process and tooling
 
+- [ ] Implement version selection from commit notation, a manual major-version step, and the AI release-notes and version check (see process.md).
 - [ ] Write a skill for the test-case format, including regenerating expected output with `RIKTIG_WRITE_EXPECTED=1` and reviewing it, and scaffolding new cases.
   Note that the case format can't express multiple projects or source generators; those tests live in `RenameWorkspaceTests.cs`.
 - [ ] Make `RIKTIG_WRITE_EXPECTED=1` work in one run (it currently needs two).

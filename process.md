@@ -23,6 +23,11 @@ GitHub Actions on every commit: build, full test suite, naive-implementation mut
 - Versions follow [Semantic Versioning](https://semver.org/).
   Only incompatible protocol changes are major versions.
 - Every commit to `main` produces a prerelease, versioned `<next version>-ci.<run number>`.
+- `<next version>` is worked out from the [commit notation](CONTRIBUTING.md) since the last release:
+  any uppercase `F` commit (including a new refusal code) means a minor version, any other uppercase commit means a patch, and lowercase commits alone mean no release.
+  A major version is never inferred; it is chosen by hand.
+- At release time, an AI reads the changes since the last release, writes the release notes (including new refusal codes), and checks the version: it flags commits whose prefix doesn't match the change, and anything that looks like an incompatible protocol change.
+  A person approves the final version.
 - A release is promoted when it passes the full edge-case suite plus a fuzzing threshold on the corpus with zero correctness failures (threshold defined per language once fuzzing is running).
 - Packaging uses each ecosystem's native tooling (NuGet/dotnet tool, PyPI, vcpkg/Conan/Homebrew, VS Code Marketplace).
 
