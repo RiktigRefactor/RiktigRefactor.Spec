@@ -28,3 +28,9 @@ When you need input on a decision:
 
 Then have a discussion.
 This formatting applies every time you present a decision, even a quick one.
+
+## To-do list
+
+[todo.md](todo.md) is the source of truth for open decisions and remaining work.
+Update it as items are decided or done.
+The copy in the claude.ai project is updated only when asked.
