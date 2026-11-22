@@ -24,6 +24,9 @@ Comments, documentation, and string literals are **not** updated (see [limitatio
    Every previously-recorded reference must resolve to the same symbol as before (target references now spelled `newName`).
    Refuse if any binding changed.
 
+Conflict repairs that insert casts are never accepted: the tool refuses (`binding-would-change` in C#) instead.
+For example, renaming `G(short)` to `F` next to an existing `F(int)` would make `G(1)` call `F(int)`; Roslyn's repair, `F((short)1)`, is not accepted.
+
 ## Edge cases that must be handled (tests required)
 
 - **Capture**: renaming `x` to `y` where an inner reference to `x` would now bind to an existing inner `y`.

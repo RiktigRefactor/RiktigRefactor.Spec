@@ -4,7 +4,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Decisions needed
 
-- [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
 
