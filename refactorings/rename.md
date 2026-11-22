@@ -9,14 +9,20 @@ Rename a symbol (variable, parameter, field, property, method, type, namespace/m
 
 ## Scope
 
-Symbols only. Comments, documentation, and string literals are **not** updated (see [limitations.md](../limitations.md)).
+Symbols only.
+Comments, documentation, and string literals are **not** updated (see [limitations.md](../limitations.md)).
 
 ## Algorithm (normative outline)
 
-1. Resolve the symbol at the cursor. Refuse if none, or if it is not renameable (e.g. defined outside the workspace, in metadata or a third-party package).
-2. Record the binding of every identifier in the workspace that could be affected (at minimum: all references to the target symbol, and all references to any symbol named `newName`).
-3. Rewrite the declaration and all references. Handle language-specific spelling (e.g. C# `@` escapes, keyword collisions).
-4. **Re-binding check**: re-bind the result. Every previously-recorded reference must resolve to the same symbol as before (target references now spelled `newName`). Refuse if any binding changed.
+1. Resolve the symbol at the cursor.
+   Refuse if none, or if it is not renameable (e.g. defined outside the workspace, in metadata or a third-party package).
+1. Record the binding of every identifier in the workspace that could be affected (at minimum: all references to the target symbol, and all references to any symbol named `newName`).
+1. Rewrite the declaration and all references.
+   Handle language-specific spelling (e.g.
+   C# `@` escapes, keyword collisions).
+1. **Re-binding check**: re-bind the result.
+   Every previously-recorded reference must resolve to the same symbol as before (target references now spelled `newName`).
+   Refuse if any binding changed.
 
 ## Edge cases that must be handled (tests required)
 

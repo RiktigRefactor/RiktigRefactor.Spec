@@ -2,7 +2,9 @@
 
 ## Language specification review
 
-Each language repo maintains a checklist of language-spec sections relevant to each refactoring. Tests cite sections (see [test-format.md](test-format.md)); CI reports sections with no tests. Models systematically review the spec for edge cases and correctness, section by section.
+Each language repo maintains a checklist of language-spec sections relevant to each refactoring.
+Tests cite sections (see [test-format.md](test-format.md)); CI reports sections with no tests.
+Models systematically review the spec for edge cases and correctness, section by section.
 
 ## Fuzzing
 
@@ -25,4 +27,5 @@ GitHub Actions on every commit: build, full test suite, naive-implementation mut
 
 ## Telemetry
 
-Opt-in only. Refusal codes (not code) are the most useful signal for prioritizing future refactorings.
+Opt-in only.
+Refusal codes (not code) are the most useful signal for prioritizing future refactorings.

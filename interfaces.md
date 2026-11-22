@@ -1,6 +1,8 @@
 # Interfaces
 
-The **library** is the implementation. The CLI, MCP server, and language server are thin wrappers that behave identically. The test suite runs through the library; a small set of integration tests covers each wrapper.
+The **library** is the implementation.
+The CLI, MCP server, and language server are thin wrappers that behave identically.
+The test suite runs through the library; a small set of integration tests covers each wrapper.
 
 ## Naming
 
@@ -26,14 +28,16 @@ riktig-cs batch --workspace App.sln actions.jsonl [--best-effort]
 riktig-cs mcp
 ```
 
-- Default is preview: prints a unified diff. `--apply` writes files.
+- Default is preview: prints a unified diff.
+  `--apply` writes files.
 - `--json` emits the protocol result.
 - Selection via `--at` / `--range` or markers in the file.
 - `--commit-message` prints a generated commit message (see [commits.md](commits.md)).
 
 ## MCP
 
-- One MCP server per language tool. Tools: `rename`, `extract_iife`, `batch`, `explain_refusal`, `list_refactorings`.
+- One MCP server per language tool.
+  Tools: `rename`, `extract_iife`, `batch`, `explain_refusal`, `list_refactorings`.
 - Returns edits by default; writing files requires an explicit `apply: true`.
 - Tool descriptions are written for agents (see [ai.md](ai.md)).
 
@@ -41,7 +45,10 @@ riktig-cs mcp
 
 - Each language tool runs as a long-lived language server so the workspace stays loaded.
 - The `vscode` extension is a thin client.
-- Refactorings appear as code actions (lightbulb, Ctrl+.). Refactorings that would refuse appear **disabled with the reason**, so the user sees why without trying.
-- Edits go through VS Code's refactor preview. Warnings appear there.
+- Refactorings appear as code actions (lightbulb, Ctrl+.).
+  Refactorings that would refuse appear **disabled with the reason**, so the user sees why without trying.
+- Edits go through VS Code's refactor preview.
+  Warnings appear there.
 - Each refactoring is one workspace edit, undone with one Ctrl+Z.
-- Rename is a separate command, "Riktig Rename". A setting lets it take over F2; off by default.
+- Rename is a separate command, "Riktig Rename".
+  A setting lets it take over F2; off by default.

@@ -2,7 +2,8 @@
 
 (In C#, also called "extract static lambda".)
 
-Wrap a selected expression or sequence of statements in an immediately-invoked function. Variables the code would capture from the surrounding scope are passed in as parameters instead, so the function captures nothing (except `this` in C++, see below).
+Wrap a selected expression or sequence of statements in an immediately-invoked function.
+Variables the code would capture from the surrounding scope are passed in as parameters instead, so the function captures nothing (except `this` in C++, see below).
 
 ## Input
 
@@ -30,11 +31,13 @@ Statements use `Action<...>` (or `Func<...>` when values flow out).
 (a, b) = ((Func<int, int, (int, int)>)(static (a, b) => { a++; b = a * 2; return (a, b); }))(a, b);
 ```
 
-`this` and instance members used in the selection are passed explicitly as a parameter. Refuse if `this` is a struct and the selection mutates it, or if the selection uses `base.`.
+`this` and instance members used in the selection are passed explicitly as a parameter.
+Refuse if `this` is a struct and the selection mutates it, or if the selection uses `base.`.
 
 ### C++
 
-Uses `[]` lambdas, or `[this]` when the selection uses members. Captured locals are passed as parameters (by reference where the selection writes to them or where copying would change behavior).
+Uses `[]` lambdas, or `[this]` when the selection uses members.
+Captured locals are passed as parameters (by reference where the selection writes to them or where copying would change behavior).
 
 ```cpp
 auto total = [](double price, int qty) { return price * qty; }(price, qty);
@@ -57,7 +60,8 @@ Writes are returned and reassigned at the call site, as in C#.
 ## Preconditions (refuse otherwise)
 
 - The selection is a complete expression, or complete statements in a single block.
-- No non-local control flow leaves the selection: `return`, `break`, `continue`, `goto`, `yield`, labels. (Future refactorings will help users eliminate these first.)
+- No non-local control flow leaves the selection: `return`, `break`, `continue`, `goto`, `yield`, labels.
+  (Future refactorings will help users eliminate these first.)
 - No `await` in the selection.
 - The type of the expression and every parameter can be written out explicitly (no anonymous types in C#, etc.).
 - Wrapping does not change the type, conversion, or overload resolution of the expression (target typing: `null`, `default`, lambdas, `new()`, collection expressions, implicit conversions).

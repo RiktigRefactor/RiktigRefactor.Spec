@@ -1,6 +1,8 @@
 # Test format
 
-Every test is executable. Both the input and the expected output must compile (where applicable), run, and pass an assertion. This guarantees:
+Every test is executable.
+Both the input and the expected output must compile (where applicable), run, and pass an assertion.
+This guarantees:
 
 - (A) the code being refactored is legal and does what the test author thinks it does;
 - (B) the refactored code still does the same thing.
@@ -65,20 +67,28 @@ Multi-line selections start and end on line boundaries.
 
 ### Handling
 
-The runner removes markers before invoking the refactoring. Expected output contains no markers. Only one selection per test file (batch tests use a JSONL file instead; see below).
+The runner removes markers before invoking the refactoring.
+Expected output contains no markers.
+Only one selection per test file (batch tests use a JSONL file instead; see below).
 
 ## Assertions
 
 - Every input contains at least one assertion, checked when the program runs.
-- For order-sensitive behavior, test code appends to a trace log and asserts on the whole trace. This catches double evaluation and reordering.
-- **Assertions must be able to fail.** Each refactoring keeps a deliberately naive implementation. CI checks that every edge-case test fails under the naive version (cheap mutation testing). A test that passes under the naive version is flagged.
+- For order-sensitive behavior, test code appends to a trace log and asserts on the whole trace.
+  This catches double evaluation and reordering.
+- **Assertions must be able to fail.** Each refactoring keeps a deliberately naive implementation.
+  CI checks that every edge-case test fails under the naive version (cheap mutation testing).
+  A test that passes under the naive version is flagged.
 
 ## What the runner checks
 
-1. The input runs and passes its assertion. (Failure = bad test.)
-2. The refactoring produces the expected outcome (success or the specified refusal code).
-3. Output matches `expected/` exactly, trivia included. (Mismatch with a passing step 4 = cosmetic issue.)
-4. The output runs and passes its assertion. (Failure = correctness bug, highest severity.)
+1. The input runs and passes its assertion.
+   (Failure = bad test.)
+1. The refactoring produces the expected outcome (success or the specified refusal code).
+1. Output matches `expected/` exactly, trivia included.
+   (Mismatch with a passing step 4 = cosmetic issue.)
+1. The output runs and passes its assertion.
+   (Failure = correctness bug, highest severity.)
 
 ## Batch tests
 
@@ -90,9 +100,11 @@ tests/batch/swap/
   expected/
 ```
 
-Required batch cases: textual overlap, name collision (`a→c`, `b→c`), swap (`a→b`, `b→a`), IIFE containing a renamed reference. Property: for batches with no interactions, any ordering of lines gives the same result.
+Required batch cases: textual overlap, name collision (`a→c`, `b→c`), swap (`a→b`, `b→a`), IIFE containing a renamed reference.
+Property: for batches with no interactions, any ordering of lines gives the same result.
 
 ## Sources of tests
 
-- Hand-written and model-generated edge cases, guided by a systematic review of each language specification. No human review is required for model-generated tests; the executable assertion plus the naive-implementation mutation check is the bar.
+- Hand-written and model-generated edge cases, guided by a systematic review of each language specification.
+  No human review is required for model-generated tests; the executable assertion plus the naive-implementation mutation check is the bar.
 - Mechanical fuzzing over open-source GitHub code (see [process.md](process.md)).
