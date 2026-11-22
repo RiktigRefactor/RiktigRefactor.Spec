@@ -10,7 +10,7 @@ A refactoring done by a trusted automated tool is a provable refactoring, so the
 Behavior-preserving rename across 7 files (14 references).
 
 Refactor: rename csharp src/Order.cs:12:17 Totl -> Total
-Refactor-Tool: riktig-cs 42
+Refactor-Tool: riktig-cs 1.4.0
 ```
 
 - The `Refactor:` trailer is machine-readable.
