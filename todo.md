@@ -10,7 +10,6 @@ Everything that still needs to be considered or addressed, across all repos.
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
 - [ ] Decide how each release's next version is chosen (manual, or derived from commit notation).
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
-- [ ] Confirm the change to `basic/record-positional-parameter`: it used to expect success and now expects refusal (`string-names-symbol`).
 
 ## Pending pull requests
 
@@ -34,7 +33,6 @@ Still unchecked:
 - [ ] Renaming a member of an anonymous type is refused (safe, but unnecessary).
 - [ ] A named attribute argument `[A(Prop = 1)]` blocks renaming `Prop`, and renaming an attribute class used as `[A]` is refused, probably because of how the verifier identifies the attribute's implicit constructor.
 - [ ] Calling a record's generated `Deconstruct` explicitly blocks renaming its properties.
-- [ ] Every instance member of a record is refused, including private ones that `ToString` doesn't print.
 - [ ] Any record in the workspace blocks renames to or from `Equals`, `GetHashCode`, `ToString`, `PrintMembers`, or `Deconstruct`.
 - [ ] Any generated file containing the old or new name blocks the rename, even when the name means something unrelated there.
 - [ ] The implicit-name check refuses based on syntax kinds anywhere in the workspace.
