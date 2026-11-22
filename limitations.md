@@ -22,7 +22,8 @@ It does **not** update comments, documentation, or string literals.
 Some language features turn a name into a string at compile time: C#'s `nameof`, `[CallerMemberName]`, and `[CallerArgumentExpression]`.
 A rename changes those strings, by design, so they keep matching the source.
 For example, renaming `customer` to `client` in `ArgumentNullException.ThrowIfNull(customer)` changes the exception's parameter name from `"customer"` to `"client"`.
-Code that depends on the exact text, such as tests that compare error messages or tools that parse logs, may see a difference.
+Renaming an enum member likewise changes its name as text: `ToString()`, `Enum.Parse`, and serializers that write enum names (such as JSON) use the new name.
+Code that depends on the exact text, such as tests that compare error messages, tools that parse logs, or stored data and config files that contain enum names, may see a difference.
 
 ## Conditional compilation
 

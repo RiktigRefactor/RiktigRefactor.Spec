@@ -10,9 +10,6 @@ Everything that still needs to be considered or addressed, across all repos.
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
 - [ ] Decide how each release's next version is chosen (manual, or derived from commit notation).
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
-- [ ] Decide whether renaming an enum member is a behavior change: it changes `ToString()` and `Enum.Parse` results.
-  The `basic/enum-member` case currently accepts it.
-  This is the same kind of issue as records, whose renames are now refused because `ToString` prints member names.
 - [ ] Confirm the change to `basic/record-positional-parameter`: it used to expect success and now expects refusal (`string-names-symbol`).
 
 ## Pending pull requests
