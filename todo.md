@@ -15,31 +15,36 @@ Everything that still needs to be considered or addressed, across all repos.
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
 - [ ] Decide how each release's next version is chosen (manual, or derived from commit notation).
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
+- [ ] Decide whether renaming an enum member is a behavior change: it changes `ToString()` and `Enum.Parse` results.
+  The `basic/enum-member` case currently accepts it.
+  This is the same kind of issue as records, whose renames are now refused because `ToString` prints member names.
+- [ ] Confirm the change to `basic/record-positional-parameter`: it used to expect success and now expects refusal (`string-names-symbol`).
 
 ## Pending pull requests
 
 - [ ] RiktigRefactor.CSharp #2: bump .NET SDK from 10.0.115 to 11.0.100 (CI passed).
-- [ ] RiktigRefactor.CSharp #1 and RiktigRefactor.Spec #1: bump the Markdown link-check action.
+- [ ] RiktigRefactor.Spec #1: bump the Markdown link-check action (the C# repo's copy is merged).
 
 ## C#: correctness review
 
-The first independent review was cut short by a session restart.
+The second review covered multi-project solutions, generated code, newer language features, attributes/crefs/labels/aliases, inferred tuple and anonymous-type names, static contexts, implicitly looked-up names, existing edge-case assertions, and the CLI.
+It fixed 8 bugs; the suite has 96 tests.
 Still unchecked:
 
-- [ ] Solutions with more than one project.
-- [ ] Generated code and source generators.
-- [ ] Partial methods, primary constructors, extension blocks, top-level statements.
-- [ ] Names in attributes, crefs, labels, and aliases.
-- [ ] Tuple element names and anonymous-type member names inferred from a renamed member.
-- [ ] `this.` qualification inserted in static contexts.
-- [ ] Whether every existing edge-case assertion really depends on its edge case.
-- [ ] The CLI, scripts, and workflows.
-- [ ] Regression tests for each implicitly looked-up name (`GetEnumerator`, `Dispose`, `GetAwaiter`, `Deconstruct`, query methods, `Length`/`Count`/`Slice`, interpolated-string handlers); only `Add` has one.
+- [ ] `[CollectionBuilder]` capture by overload (only lightly probed).
+- [ ] Case-insensitive path comparison on Windows in the CLI.
+- [ ] CI workflows and scripts, beyond confirming they pass.
 - [ ] Verify the C# specification section numbers cited in test cases; they were cited from memory.
+- [ ] A test for the CLI's exit code 2 on unexpected exceptions (no triggering input found yet).
 
 ## C#: known false refusals and precision
 
 - [ ] Renaming a member of an anonymous type is refused (safe, but unnecessary).
+- [ ] A named attribute argument `[A(Prop = 1)]` blocks renaming `Prop`, and renaming an attribute class used as `[A]` is refused, probably because of how the verifier identifies the attribute's implicit constructor.
+- [ ] Calling a record's generated `Deconstruct` explicitly blocks renaming its properties.
+- [ ] Every instance member of a record is refused, including private ones that `ToString` doesn't print.
+- [ ] Any record in the workspace blocks renames to or from `Equals`, `GetHashCode`, `ToString`, `PrintMembers`, or `Deconstruct`.
+- [ ] Any generated file containing the old or new name blocks the rename, even when the name means something unrelated there.
 - [ ] The implicit-name check refuses based on syntax kinds anywhere in the workspace.
   A precise version would compare what those constructs bind to before and after the rename, in `BindingVerifier`.
 
@@ -79,7 +84,10 @@ Still unchecked:
 
 ## Process and tooling
 
-- [ ] Write a skill for the test-case format, including regenerating expected output with `RIKTIG_WRITE_EXPECTED=1` and reviewing it.
+- [ ] Write a skill for the test-case format, including regenerating expected output with `RIKTIG_WRITE_EXPECTED=1` and reviewing it, and scaffolding new cases.
+  Note that the case format can't express multiple projects or source generators; those tests live in `RenameWorkspaceTests.cs`.
+- [ ] Make `RIKTIG_WRITE_EXPECTED=1` work in one run (it currently needs two).
+- [ ] Document how to run a single test case (the full suite takes about 50 seconds).
 - [ ] Keep the shared skills in sync across repos (submodule or sync script) instead of copies.
 - [ ] Update the arlos-commit-notation skill to list this project's extension intentions and dependency-update prefixes.
 - [ ] Fix `- r` to `^ r` in the template repo's Dependabot config.
