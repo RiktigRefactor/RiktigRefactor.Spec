@@ -7,10 +7,6 @@ Everything that still needs to be considered or addressed, across all repos.
 - [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
-- [ ] Decide whether renaming an enum member is a behavior change: it changes `ToString()` and `Enum.Parse` results.
-  The `basic/enum-member` case currently accepts it.
-  This is the same kind of issue as records, whose renames are now refused because `ToString` prints member names.
-- [ ] Confirm the change to `basic/record-positional-parameter`: it used to expect success and now expects refusal (`string-names-symbol`).
 
 ## Pending pull requests
 
@@ -34,7 +30,6 @@ Still unchecked:
 - [ ] Renaming a member of an anonymous type is refused (safe, but unnecessary).
 - [ ] A named attribute argument `[A(Prop = 1)]` blocks renaming `Prop`, and renaming an attribute class used as `[A]` is refused, probably because of how the verifier identifies the attribute's implicit constructor.
 - [ ] Calling a record's generated `Deconstruct` explicitly blocks renaming its properties.
-- [ ] Every instance member of a record is refused, including private ones that `ToString` doesn't print.
 - [ ] Any record in the workspace blocks renames to or from `Equals`, `GetHashCode`, `ToString`, `PrintMembers`, or `Deconstruct`.
 - [ ] Any generated file containing the old or new name blocks the rename, even when the name means something unrelated there.
 - [ ] The implicit-name check refuses based on syntax kinds anywhere in the workspace.
