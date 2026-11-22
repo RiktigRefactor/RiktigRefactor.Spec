@@ -13,6 +13,8 @@ This project uses these [extension intentions](https://github.com/RefactoringCom
 
 | Prefix | Name | Intention |
 |---|---|---|
+| `t` | Test-only | Change automated tests without changing product code, such as adding an edge-case test. |
+| `a` | Auto | Automatic formatting, code generation, or similar tasks. |
 | `e` | Environment | Development setup and tooling changes that don't affect program behavior, such as CI, linting, and dependency-update configuration. |
 
 Dependency updates use `^ r` for packages and SDKs, and `. e` for CI actions.
