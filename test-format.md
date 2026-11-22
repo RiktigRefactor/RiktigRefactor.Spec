@@ -25,7 +25,7 @@ The refactoring is the one named by the case's directory (e.g. `rename/`).
 ```json
 {
   "options": { "newName": "count" },
-  "spec": ["C# 13 §7.7.1"],
+  "spec": ["C# §7.7 Scopes"],
   "notes": "Inner reference would be captured by an existing local."
 }
 ```
@@ -39,6 +39,18 @@ The refactoring is the one named by the case's directory (e.g. `rename/`).
 - `notes` (optional): why the case exists.
 
 Every test cites the language-specification sections it covers, so we can report which sections lack tests.
+
+### Citations
+
+Each citation names the language, the section's ID, and its title, with no edition, so citations don't go stale when a new edition comes out.
+The title lets the coverage report catch a wrong section ID.
+
+| Language | Reference | Example |
+|---|---|---|
+| C# | The [C# standard](https://github.com/dotnet/csharpstandard) (ECMA-334) | `C# §12.6.4 Overload resolution` |
+| C# (not yet in the standard) | The Microsoft feature specification, by name | `C# feature: extension members` |
+| C++ | The standard's stable section names | `C++ [over.match]` |
+| Python | The [Language Reference](https://docs.python.org/3/reference/) | `Python §4.2.2 Resolution of names` |
 
 ## Selection markers
 
