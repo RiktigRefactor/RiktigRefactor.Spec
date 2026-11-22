@@ -21,7 +21,7 @@ GitHub Actions on every commit: build, full test suite, naive-implementation mut
 ## Releases
 
 - Versions follow [Semantic Versioning](https://semver.org/).
-  A change that can make a previously accepted refactoring refuse, or changes the protocol incompatibly, is a major version.
+  Only incompatible protocol changes are major versions.
 - Every commit to `main` produces a prerelease, versioned `<next version>-ci.<run number>`.
 - A release is promoted when it passes the full edge-case suite plus a fuzzing threshold on the corpus with zero correctness failures (threshold defined per language once fuzzing is running).
 - Packaging uses each ecosystem's native tooling (NuGet/dotnet tool, PyPI, vcpkg/Conan/Homebrew, VS Code Marketplace).
