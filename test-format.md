@@ -13,25 +13,30 @@ Each test case is a directory, so cross-file refactorings are first-class:
 
 ```
 tests/rename/shadowing/inner-capture/
-  case.json          # refactoring, options, expected outcome, spec citations
+  case.json          # options, expected outcome, spec citations
   input/             # one or more source files, with selection markers
   expected/          # expected output files (omitted when a refusal is expected)
 ```
 
 ## case.json
 
+The refactoring is the one named by the case's directory (e.g. `rename/`).
+
 ```json
 {
-  "refactoring": "rename",
   "options": { "newName": "count" },
-  "expect": "success",
-  "warnings": [],
   "spec": ["C# 13 §7.7.1"],
   "notes": "Inner reference would be captured by an existing local."
 }
 ```
 
-For an expected refusal: `"expect": { "refuse": "binding-would-change" }` and no `expected/` directory.
+- `options`: the refactoring's options.
+- `refuse` (optional): the refusal code the refactoring must return, e.g. `"refuse": "binding-would-change"`.
+  Without `refuse`, the case expects success and has an `expected/` directory; with it, there is no `expected/` directory.
+- `naiveShouldFail` (optional, default `false`): set on edge cases; the runner checks that the naive implementation fails this case (see [Assertions](#assertions)).
+- `warnings` (optional): warning codes the refactoring must report.
+- `spec`: language-specification sections the case covers.
+- `notes` (optional): why the case exists.
 
 Every test cites the language-specification sections it covers, so we can report which sections lack tests.
 
@@ -77,7 +82,7 @@ Only one selection per test file (batch tests use a JSONL file instead; see belo
 - For order-sensitive behavior, test code appends to a trace log and asserts on the whole trace.
   This catches double evaluation and reordering.
 - **Assertions must be able to fail.** Each refactoring keeps a deliberately naive implementation.
-  CI checks that every edge-case test fails under the naive version (cheap mutation testing).
+  CI checks that every edge-case test (`naiveShouldFail`) fails under the naive version (cheap mutation testing).
   A test that passes under the naive version is flagged.
 
 ## What the runner checks

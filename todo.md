@@ -4,9 +4,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Decisions needed
 
-- [ ] Align the test-case format between the spec and the C# repo.
-  The spec writes a refusal as `"expect": {"refuse": ...}`; the C# tests use a top-level `refuse` field and a `naiveShouldFail` flag the spec doesn't describe.
-  Recommendation: update the spec to match the 51 existing cases.
 - [ ] Decide whether a rename that changes a `[CallerMemberName]` or `[CallerArgumentExpression]` value is a behavior change (refuse or warn) or intended, like `nameof`.
 - [ ] Decide whether JSON results use workspace-relative or absolute file paths.
 - [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
