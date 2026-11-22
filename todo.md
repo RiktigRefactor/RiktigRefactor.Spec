@@ -4,7 +4,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Decisions needed
 
-- [ ] Add the C# refusal codes `dynamic-access-possible`, `string-names-symbol`, and `would-introduce-errors` to the spec, or rename them to match existing spec codes.
 - [ ] Align the test-case format between the spec and the C# repo.
   The spec writes a refusal as `"expect": {"refuse": ...}`; the C# tests use a top-level `refuse` field and a `naiveShouldFail` flag the spec doesn't describe.
   Recommendation: update the spec to match the 51 existing cases.
