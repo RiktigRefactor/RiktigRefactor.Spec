@@ -6,7 +6,6 @@ Everything that still needs to be considered or addressed, across all repos.
 
 - [ ] Decide whether JSON results use workspace-relative or absolute file paths.
 - [ ] Decide whether Roslyn's cast-inserting conflict repairs (e.g. `G(1)` → `F((short)1)`) should ever be accepted, or always refused.
-- [ ] Decide how to cite language specifications in tests (which edition and numbering).
 - [ ] Decide whether release notes must list new refusal codes, since new refusals aren't breaking changes.
 - [ ] Decide how each release's next version is chosen (manual, or derived from commit notation).
 - [ ] Decide whether to add a Dependabot auto-merge workflow, as the template repo has.
@@ -29,7 +28,7 @@ Still unchecked:
 - [ ] `[CollectionBuilder]` capture by overload (only lightly probed).
 - [ ] Case-insensitive path comparison on Windows in the CLI.
 - [ ] CI workflows and scripts, beyond confirming they pass.
-- [ ] Verify the C# specification section numbers cited in test cases; they were cited from memory.
+- [ ] Verify the C# specification section numbers cited in test cases (they were cited from memory), and convert them to the citation format in test-format.md.
 - [ ] A test for the CLI's exit code 2 on unexpected exceptions (no triggering input found yet).
 
 ## C#: known false refusals and precision
