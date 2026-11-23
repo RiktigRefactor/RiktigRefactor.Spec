@@ -66,6 +66,8 @@ Writes are returned and reassigned at the call site, as in C#.
 - The type of the expression and every parameter can be written out explicitly (no anonymous types in C#, etc.).
 - Wrapping does not change the type, conversion, or overload resolution of the expression (target typing: `null`, `default`, lambdas, `new()`, collection expressions, implicit conversions).
 - Evaluation order and evaluation count of every subexpression are unchanged.
+- A closure created in the selection (lambda, local function, anonymous class, nested `def`) that uses an outer variable would capture the new parameter, a copy, instead of the variable.
+  Refuse unless that variable is not written, inside or outside the selection, while the closure can still run.
 - C#: no `ref` locals, `ref struct` values, `stackalloc`, pointers or `fixed` across the boundary; no `base.` access; definite-assignment state is preserved.
 - C++: object lifetimes, temporary lifetime extension, copy elision, destructor timing, value category and `decltype` of the expression are unchanged.
 - Python: no zero-argument `super()`, `__class__`, `locals()`, `globals()` mutation, `nonlocal`/`global` targets, or walrus targets crossing the boundary.
