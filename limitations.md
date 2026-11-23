@@ -12,6 +12,13 @@ Code we cannot see statically is not accounted for: reflection, `eval`/`exec`, `
 Where the tool can detect a likely dynamic access to an affected symbol (e.g. a string literal equal to the old name passed to a reflection API, or `getattr` in Python), it refuses or warns.
 It cannot detect all such cases.
 
+Reflection also observes names as text, and a rename changes that text.
+The tool does not detect these cases:
+
+- Enum member names: `ToString()` and `Enum.Parse` use the new name.
+- `typeof(T).Name`: it returns the new type name.
+- Member names seen through expression trees: for `b => b.Count`, code that prints or inspects the member name sees the new name after the rename.
+
 ## Rename: symbols only
 
 Rename updates symbols and their references.
