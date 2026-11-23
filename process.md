@@ -23,13 +23,15 @@ GitHub Actions on every commit: build, full test suite, naive-implementation mut
 - Versions follow [Semantic Versioning](https://semver.org/).
   Only incompatible protocol changes are major versions.
 - A new refusal code is not a breaking change: clients must handle codes they don't recognize.
-  It is a minor version, and the release notes list each new code with a one-line meaning.
+  It is usually a patch version, and the release notes list each new code with a one-line meaning.
 - Every commit to `main` produces a prerelease, versioned `<next version>-ci.<run number>`.
 - `<next version>` is worked out from the [commit notation](CONTRIBUTING.md) since the last release:
-  any uppercase `F` commit (including a new refusal code) means a minor version, any other uppercase commit means a patch, and lowercase commits alone mean no release.
+  any uppercase `F` commit that adds a feature means a minor version, any other uppercase commit (including one that adds a refusal code) means a patch, and lowercase commits alone mean no release.
   A major version is never inferred; it is chosen by hand.
-- At release time, an AI reads the changes since the last release, writes the release notes (including new refusal codes), and checks the version: it flags commits whose prefix doesn't match the change, and anything that looks like an incompatible protocol change.
-  A person approves the final version.
+- The AI creates the release, but only as a draft.
+  It reads the commit history since the last release, works out the version, and writes the release notes, including every new refusal code with a one-line meaning.
+  It flags commits whose prefix doesn't match the change, and anything that looks like an incompatible protocol change.
+  A person reviews the draft, edits it if needed, and approves it; only then is it published.
 - A release is promoted when it passes the full edge-case suite plus a fuzzing threshold on the corpus with zero correctness failures (threshold defined per language once fuzzing is running).
 - Packaging uses each ecosystem's native tooling (NuGet/dotnet tool, PyPI, vcpkg/Conan/Homebrew, VS Code Marketplace).
 
