@@ -20,6 +20,9 @@ tests/rename/shadowing/inner-capture/
 
 ## case.json
 
+The fields below are the shared vocabulary for a case's metadata.
+A language repo may declare them in a `case.json` file or in its own test code (the C# repo uses a `[Fact]` per case, with the input and expected files still on disk in the directory layout above).
+
 The refactoring is the one named by the case's directory (e.g. `rename/`).
 
 ```json
