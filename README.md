@@ -22,6 +22,7 @@ Each language has its own implementation repo.
 | `RiktigRefactor.VSCode` | VS Code extension (thin client over each language server) | TypeScript |
 
 Initial languages: C#, Python, C++.
+The refactoring specs also cover Java, TypeScript, Rust and Go, ahead of their implementations.
 The goal is to cover every language people care about.
 
 ## Contents

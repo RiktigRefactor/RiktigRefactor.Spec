@@ -58,6 +58,10 @@ The examples below show the idea: the language, the section's ID, and its title,
 | C# (not yet in the standard) | The Microsoft feature specification, by name | `C# feature: extension members` |
 | C++ | The standard's stable section names | `C++ [over.match]` |
 | Python | The [Language Reference](https://docs.python.org/3/reference/) | `Python §4.2.2 Resolution of names` |
+| Java | The [Java Language Specification](https://docs.oracle.com/javase/specs/) | `Java §15.12.4 Run-Time Evaluation of Method Invocation` |
+| TypeScript | [ECMA-262](https://tc39.es/ecma262/) for runtime behavior; TypeScript has no current specification, so type-system features are cited by name | `ECMAScript §13.3.6 Function Calls`, `TypeScript feature: contextual typing` |
+| Rust | [The Rust Reference](https://doc.rust-lang.org/reference/), by page title | `Rust: Method-call expressions` |
+| Go | [The Go Programming Language Specification](https://go.dev/ref/spec), by section title | `Go: Order of evaluation` |
 
 ## Selection markers
 

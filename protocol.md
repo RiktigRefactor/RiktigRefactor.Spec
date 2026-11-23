@@ -16,7 +16,7 @@ One JSON schema is shared by every language and every interface (library, CLI, M
 - Lines and columns are 1-based; columns count Unicode scalar values.
   A cursor has `start == end`.
 - `location` may be omitted when the file contains selection markers (the CLI and test runner accept this).
-- Workspace: C# `.sln`/`.csproj`; C++ `compile_commands.json` (required: without it, macros and includes cannot be resolved soundly, so the tool refuses); Python project root plus interpreter path.
+- Workspace: C# `.sln`/`.csproj`; C++ `compile_commands.json` (required: without it, macros and includes cannot be resolved soundly, so the tool refuses); Python project root plus interpreter path; Java Maven or Gradle build; TypeScript `tsconfig.json`; Rust `Cargo.toml` (a package or a Cargo workspace); Go `go.mod` or `go.work`.
 
 ## Result
 
