@@ -17,6 +17,10 @@ The tool does not detect these cases:
 
 - `typeof(T).Name`: it returns the new type name.
 - Member names seen through expression trees: for `b => b.Count`, code that prints or inspects the member name sees the new name after the rename.
+- Java: `getClass().getName()`, `Enum.name()`, a record's `toString()`, and Java serialization's field names.
+- TypeScript and JavaScript: a function's or class's `.name`, including names inferred from the variable a function is assigned to.
+- Rust: output of `#[derive(Debug)]`, `std::any::type_name`, and serialization derives such as serde's.
+- Go: `%+v` and `%T` output, `reflect`, and `encoding/json` field names when a field has no tag.
 
 ## Rename: symbols only
 
@@ -32,6 +36,20 @@ For example, renaming `customer` to `client` in `ArgumentNullException.ThrowIfNu
 Renaming an enum member likewise changes its name as text: `ToString()`, `Enum.Parse`, and serializers that write enum names (such as JSON) use the new name.
 Renaming a C# record or one of its properties changes what the record's synthesized `ToString()` prints.
 Code that depends on the exact text, such as tests that compare error messages, tools that parse logs, or stored data and config files that contain these names, may see a difference.
+
+## Moved members: the container is visible
+
+Moving a member (Move static member, Move static method to instance method) changes the type or module that reflection reports for it: C# `DeclaringType`, Java `getDeclaringClass()`, Python `__module__` and `__qualname__`, and stack traces.
+Python's `pickle` stores functions and classes by module and qualified name, so pickles written before the move may no longer load.
+
+## Changed signatures and external callers
+
+Make method static, Move static method to instance method, and Extract object from arguments change a method's signature, and Move static member changes its location.
+The workspace is treated as the whole program: callers outside it (other repositories, compiled binaries that are not rebuilt) are not updated.
+When the method is visible outside the workspace (public in a library, exported from a package), the tool reports a warning.
+
+The number and names of a function's parameters are also visible at runtime: JavaScript `Function.length`, Python `inspect.signature`, and reflection over parameters.
+The tool does not account for code that inspects them.
 
 ## Conditional compilation
 
