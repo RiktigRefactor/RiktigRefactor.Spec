@@ -34,6 +34,10 @@ The refactoring is the one named by the case's directory (e.g. `rename/`).
 - `refuse` (optional): the refusal code the refactoring must return, e.g. `"refuse": "binding-would-change"`.
   Without `refuse`, the case expects success and has an `expected/` directory; with it, there is no `expected/` directory.
 - `naiveShouldFail` (optional, default `false`): set on edge cases; the runner checks that the naive implementation fails this case (see [Assertions](#assertions)).
+- `projects` (optional): for multi-project cases, an ordered map from project name to the names of the projects it references, e.g. `{ "Lib": [], "App": ["Lib"] }`.
+  A project must be listed after the projects it references, and the last one is the program entry point.
+  A file belongs to the project named by the first segment of its path in `input/` and `expected/` (e.g. `input/Lib/Base.cs`).
+  Without `projects`, all files form one project.
 - `warnings` (optional): warning codes the refactoring must report.
 - `spec`: language-specification sections the case covers.
 - `notes` (optional): why the case exists.
