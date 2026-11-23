@@ -19,16 +19,16 @@ Everything that still needs to be considered or addressed, across all repos.
 
 ## Spec changes agreed
 
-- [ ] Describe in the spec that a rename may write an implicit name explicitly to keep behavior (inferred anonymous-type member names, `DllImport` entry points), as the C# side now does (CSharp #9, #10).
+None open.
 
-Done 2026-11-22: added enum member names, `typeof(T).Name`, and expression-tree member names to the spec's limitations as reflection (Spec #13, merged).
+Done 2026-11-22: added enum member names, `typeof(T).Name`, and expression-tree member names to the spec's limitations as reflection (Spec #13, merged); described in the rename spec that a rename may write an implicit name explicitly to keep behavior (Spec #15, merged).
 
 ## Pending pull requests and branches
 
 - [ ] RiktigRefactor.Spec #2 (replace markdown-link-check with lychee): its status couldn't be checked on 2026-11-22; confirm it is merged. Once it is, close the link-check bump PR Spec #1.
 - [ ] Switch the template repo and other repos (VSCode, CPP, Python) to lychee too.
 - [ ] Delete the leftover `lychee` branch in RiktigRefactor.CSharp (its PR #3 is merged; cloud sessions can't delete branches).
-- [ ] Delete the leftover `limitations-reflection-names` branch in RiktigRefactor.Spec (Spec #13 is merged; cloud sessions can't delete branches).
+- [ ] Delete the leftover branches `limitations-reflection-names` (Spec #13), `todo-sync` (Spec #14), `rename-implicit-names` (Spec #15), and `todo-spec-15` in RiktigRefactor.Spec (merged; cloud sessions can't delete branches).
 
 Done 2026-11-22: CSharp #1 (link-check bump), #2 (.NET SDK 11.0.100), #3 (lychee), #5, #6, #7 (Dependabot auto-merge) are merged; #4 (link-check retries) was closed unmerged; the branches `correctness-review-anonymous-types` and `dllimport-entry-point` are gone.
 
