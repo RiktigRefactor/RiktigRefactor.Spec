@@ -29,6 +29,7 @@ The goal is to cover every language people care about.
 - [principles.md](principles.md) — correctness model, refusal policy
 - [refactorings/rename.md](refactorings/rename.md)
 - [refactorings/extract-iife.md](refactorings/extract-iife.md)
+- [refactorings/move-static-member.md](refactorings/move-static-member.md)
 - [test-format.md](test-format.md) — executable input/expected test cases
 - [protocol.md](protocol.md) — request/result schema, batch mode
 - [interfaces.md](interfaces.md) — library, CLI, MCP, VS Code
