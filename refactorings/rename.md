@@ -24,6 +24,16 @@ Comments, documentation, and string literals are **not** updated (see [limitatio
    Every previously-recorded reference must resolve to the same symbol as before (target references now spelled `newName`).
    Refuse if any binding changed.
 
+Some names are implicit: the language derives them from the spelling of another name, and the program can observe them.
+When a rename would change such an implicit name, the tool writes the old name explicitly so behavior is kept, instead of changing it or refusing.
+Before writing it, the tool checks that the implicit name is unchanged.
+C# examples:
+
+- An anonymous type member whose name is inferred: renaming `Count` in `new { box.Count }` gives `new { Count = box.Size }`, so the member name, `ToString()` output, and equality stay the same.
+- A `[DllImport]` method with no `EntryPoint`: renaming `strlen` writes `[DllImport("c", EntryPoint = "strlen")]`, so the native function called stays the same.
+
+This differs from names captured as strings (`nameof` and similar), which change on purpose (see [limitations.md](../limitations.md)).
+
 Conflict repairs that insert casts are never accepted: the tool refuses (`binding-would-change` in C#) instead.
 For example, renaming `G(short)` to `F` next to an existing `F(int)` would make `G(1)` call `F(int)`; Roslyn's repair, `F((short)1)`, is not accepted.
 
