@@ -2,7 +2,7 @@
 
 Move a static member (a member that needs no instance) from one type or module to another, and update every reference to it, across the whole workspace.
 
-Together with Make method static and Move static method to instance method, this gives Fowler's *Move Method*.
+Together with [Make method static](make-method-static.md) and Move static method to instance method, this gives Fowler's *Move Method*.
 
 ## Input
 
@@ -167,4 +167,4 @@ So:
 ## Refusal reasons
 
 Each language defines its own refusal codes (see [protocol.md](../protocol.md)); this spec lists none, except `internal-verification-failed`.
-Where another refactoring can remove the obstacle, the suggestion names it (for example Make method static for an instance method, or [Rename](rename.md) for a name collision in the target).
+Where another refactoring can remove the obstacle, the suggestion names it (for example [Make method static](make-method-static.md) for an instance method, or [Rename](rename.md) for a name collision in the target).

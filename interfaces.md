@@ -37,7 +37,7 @@ riktig-cs mcp
 ## MCP
 
 - One MCP server per language tool.
-  Tools: one per refactoring (`rename`, `extract_iife`, `move_static_member`), `batch`, `explain_refusal`, `list_refactorings`.
+  Tools: one per refactoring (`rename`, `extract_iife`, `move_static_member`, `make_method_static`), `batch`, `explain_refusal`, `list_refactorings`.
 - Returns edits by default; writing files requires an explicit `apply: true`.
 - Tool descriptions are written for agents (see [ai.md](ai.md)).
 
