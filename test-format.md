@@ -25,7 +25,7 @@ The refactoring is the one named by the case's directory (e.g. `rename/`).
 ```json
 {
   "options": { "newName": "count" },
-  "spec": ["C# §7.7 Scopes"],
+  "spec": ["C# §7.6 Scopes"],
   "notes": "Inner reference would be captured by an existing local."
 }
 ```
@@ -42,10 +42,10 @@ Every test cites the language-specification sections it covers, so we can report
 
 ### Citations
 
-Each citation names the language, the section's ID, and its title, with no edition, so citations don't go stale when a new edition comes out.
-The title lets the coverage report catch a wrong section ID.
+Each language defines its own way of citing its language specification, and documents it in its repo, including which edition or draft its section numbers follow.
+The examples below show the idea: the language, the section's ID, and its title, so the coverage report can catch a wrong section ID.
 
-| Language | Reference | Example |
+| Language | Reference (each language repo has the final say) | Example |
 |---|---|---|
 | C# | The [C# standard](https://github.com/dotnet/csharpstandard) (ECMA-334) | `C# §12.6.4 Overload resolution` |
 | C# (not yet in the standard) | The Microsoft feature specification, by name | `C# feature: extension members` |
