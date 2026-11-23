@@ -34,7 +34,7 @@ C# examples:
 
 This differs from names captured as strings (`nameof` and similar), which change on purpose (see [limitations.md](../limitations.md)).
 
-Conflict repairs that insert casts are never accepted: the tool refuses (`binding-would-change` in C#) instead.
+Conflict repairs that insert casts are never accepted: the tool refuses instead.
 For example, renaming `G(short)` to `F` next to an existing `F(int)` would make `G(1)` call `F(int)`; Roslyn's repair, `F((short)1)`, is not accepted.
 
 ## Edge cases that must be handled (tests required)
@@ -50,8 +50,6 @@ For example, renaming `G(short)` to `F` next to an existing `F(int)` would make 
 - Python: `global`/`nonlocal`, class-body scope rules, comprehension scopes, `__all__`, keyword arguments, dynamic attribute access.
 - Swaps and collisions in batch mode (see [protocol.md](../protocol.md)).
 
-## Example refusal reasons
+## Refusal reasons
 
-Each language defines its own codes (see [protocol.md](../protocol.md)); these are examples.
-
-`no-symbol`, `not-renameable`, `invalid-identifier`, `binding-would-change`, `conflicting-declaration`, `dynamic-access-possible`, `preprocessor-region` (see limitations), `internal-verification-failed`.
+Each language defines its own refusal codes (see [protocol.md](../protocol.md)); this spec lists none, except `internal-verification-failed`.

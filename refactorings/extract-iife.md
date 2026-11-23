@@ -70,8 +70,6 @@ Writes are returned and reassigned at the call site, as in C#.
 - C++: object lifetimes, temporary lifetime extension, copy elision, destructor timing, value category and `decltype` of the expression are unchanged.
 - Python: no zero-argument `super()`, `__class__`, `locals()`, `globals()` mutation, `nonlocal`/`global` targets, or walrus targets crossing the boundary.
 
-## Example refusal reasons
+## Refusal reasons
 
-Each language defines its own codes (see [protocol.md](../protocol.md)); these are examples.
-
-`not-expression-or-statements`, `non-local-control-flow`, `contains-await`, `unnameable-type`, `type-would-change`, `evaluation-order-would-change`, `ref-like-across-boundary`, `base-access`, `mutating-struct-this`, `lifetime-would-change`, `scope-sensitive-builtin`, `preprocessor-region`, `internal-verification-failed`.
+Each language defines its own refusal codes (see [protocol.md](../protocol.md)); this spec lists none, except `internal-verification-failed`.

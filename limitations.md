@@ -36,7 +36,7 @@ Code that depends on the exact text, such as tests that compare error messages, 
 ## Conditional compilation
 
 `#if` (C#) and preprocessor conditionals/macros spanning a selection (C++) are **not supported** for now.
-Selections or renames that touch conditional regions are refused (`preprocessor-region`).
+Selections or renames that touch conditional regions are refused.
 If you need this, please open an issue; we'll prioritize based on demand.
 
 ## Language versions

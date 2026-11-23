@@ -55,7 +55,7 @@ Messages may change.
 New codes may be added in any minor version, so clients must handle codes they don't recognize (see [Releases](process.md#releases)).
 
 Each language defines its own reason codes, because the hazards differ by language.
-The codes listed in the spec are examples, not a shared set every language must use.
+The spec does not list or require any code other than `internal-verification-failed`; codes in examples, such as the one above, are illustrative.
 Each language repo is the source of truth for its codes, and documents them where agents and `explain_refusal` can find them.
 Only `internal-verification-failed` is common to all languages (see [principles.md](principles.md)).
 
