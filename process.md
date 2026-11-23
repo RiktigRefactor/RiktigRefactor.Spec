@@ -21,13 +21,13 @@ GitHub Actions on every commit: build, full test suite, naive-implementation mut
 ## Releases
 
 - Versions follow [Semantic Versioning](https://semver.org/).
-  Only incompatible protocol changes are major versions.
+  A breaking change is a major version; an additive feature is a minor version; a fix (including a new refusal code) is a patch.
 - A new refusal code is not a breaking change: clients must handle codes they don't recognize.
   It is usually a patch version, and the release notes list each new code with a one-line meaning.
 - Every commit to `main` produces a prerelease, versioned `<next version>-ci.<run number>`.
 - `<next version>` is worked out from the [commit notation](CONTRIBUTING.md) since the last release:
-  any uppercase `F` commit that adds a feature means a minor version, any other uppercase commit (including one that adds a refusal code) means a patch, and lowercase commits alone mean no release.
-  A major version is never inferred; it is chosen by hand.
+  a breaking change means a major version, an additive feature (an uppercase `F` commit) means a minor version, any other uppercase commit (including one that adds a refusal code) means a patch, and lowercase commits alone mean no release.
+  The AI proposes a major version only when it sees a breaking change, and the person approving the draft confirms or changes it.
 - The AI creates the release, but only as a draft.
   It reads the commit history since the last release, works out the version, and writes the release notes, including every new refusal code with a one-line meaning.
   It flags commits whose prefix doesn't match the change, and anything that looks like an incompatible protocol change.
