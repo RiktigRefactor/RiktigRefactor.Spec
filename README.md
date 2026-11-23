@@ -37,7 +37,6 @@ The goal is to cover every language people care about.
 - [limitations.md](limitations.md) — what is out of scope
 - [process.md](process.md) — testing, fuzzing, releases, packaging, telemetry
 - [CONTRIBUTING.md](CONTRIBUTING.md) — commit conventions
-- [todo.md](todo.md) — open decisions and remaining work
 
 ## License
 

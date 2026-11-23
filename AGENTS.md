@@ -31,6 +31,7 @@ This formatting applies every time you present a decision, even a quick one.
 
 ## To-do list
 
-[todo.md](todo.md) is the source of truth for open decisions and remaining work.
+The claude.ai project "RiktigRefactor" holds the only to-do list, in its `claude/todo.md` doc.
+It is the source of truth for open decisions and remaining work, across all repos.
 Update it as items are decided or done.
-The copy in the claude.ai project is updated only when asked.
+Don't keep a copy in a repo, so there is only one list to keep current.
