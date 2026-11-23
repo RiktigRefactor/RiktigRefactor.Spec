@@ -31,6 +31,18 @@ After producing edits, they re-analyze the result and check that:
 
 If any check fails, the refactoring is refused (reason code `internal-verification-failed`) and the failure is reported as a bug.
 
+## Evaluation order
+
+Refactorings that move expressions, or change how a value reaches a function, keep the order and the number of times every expression is evaluated.
+Some refactorings can only do that when the expressions involved are independent.
+
+Two expressions are **independent** when evaluating them in either order gives the same behavior: at most one of them has an observable effect (a write that the other or later code can see, I/O, or throwing), and neither reads anything the other writes.
+Reading a local variable or parameter that neither expression writes, and a literal, are always independent of anything.
+When the tool cannot prove two expressions independent, it treats them as dependent.
+
+Where a language leaves an order unspecified (for example C++ function arguments, or Go operands that are not calls), the original program may already run in any of the allowed orders.
+A refactoring may not narrow or widen the set of allowed orders unless the expressions whose relative order changes are independent.
+
 ## Whole-workspace
 
 Refactorings operate on a workspace, not a single file.
