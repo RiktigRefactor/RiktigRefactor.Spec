@@ -15,7 +15,6 @@ It cannot detect all such cases.
 Reflection also observes names as text, and a rename changes that text.
 The tool does not detect these cases:
 
-- Enum member names: `ToString()` and `Enum.Parse` use the new name.
 - `typeof(T).Name`: it returns the new type name.
 - Member names seen through expression trees: for `b => b.Count`, code that prints or inspects the member name sees the new name after the rename.
 
@@ -28,6 +27,7 @@ It does **not** update comments, documentation, or string literals.
 
 Some language features turn a name into a string at compile time: C#'s `nameof`, `[CallerMemberName]`, and `[CallerArgumentExpression]`.
 A rename changes those strings, by design, so they keep matching the source.
+This includes a rename that changes the value a `[CallerMemberName]` or `[CallerArgumentExpression]` parameter receives; that is acceptable.
 For example, renaming `customer` to `client` in `ArgumentNullException.ThrowIfNull(customer)` changes the exception's parameter name from `"customer"` to `"client"`.
 Renaming an enum member likewise changes its name as text: `ToString()`, `Enum.Parse`, and serializers that write enum names (such as JSON) use the new name.
 Renaming a C# record or one of its properties changes what the record's synthesized `ToString()` prints.
