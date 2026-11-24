@@ -9,8 +9,8 @@ Models systematically review the spec for edge cases and correctness, section by
 ## Fuzzing
 
 - Corpus: open-source code from GitHub, with license recorded per project.
-- Random inputs over the corpus for each refactoring: selections (Extract IIFE), targets and new names (Rename), members and destinations (Move static member), methods (Make method static), methods and receiver parameters (Move static method to instance method), and methods and parameter groups (Extract object from arguments).
-- Signature-changing refactorings are also checked by applying them followed by their inverse (Make method static, then Move static method to instance method); the round trip must pass the same oracle and, where the inverse can restore the original text, reproduce it.
+- Random inputs over the corpus for each refactoring: selections (Extract IIFE), targets and new names (Rename), members and destinations (Move static member), methods (Make method static), methods and receiver parameters (Convert static method to instance method), and methods and parameter groups (Extract object from arguments).
+- Signature-changing refactorings are also checked by applying them followed by their inverse (Make method static, then Convert static method to instance method); the round trip must pass the same oracle and, where the inverse can restore the original text, reproduce it.
 - Oracle: compile, re-binding check, and where the project has tests, run them before and after.
 - Runs nightly, not on every commit.
 - Any failure is reduced to a minimal test case and added to the suite.

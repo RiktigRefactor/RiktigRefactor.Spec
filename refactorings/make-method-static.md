@@ -5,7 +5,7 @@ The receiver (`this`, `self`) becomes an explicit parameter, or, for members tha
 Every call site is updated, across the whole workspace.
 
 Follow it with [Move static member](move-static-member.md) to move the method to another type.
-The inverse is [Move static method to instance method](move-to-instance-method.md).
+The inverse is [Convert static method to instance method](convert-to-instance-method.md).
 
 ## Input
 

@@ -39,12 +39,12 @@ Code that depends on the exact text, such as tests that compare error messages, 
 
 ## Moved members: the container is visible
 
-Moving a member (Move static member, Move static method to instance method) changes the type or module that reflection reports for it: C# `DeclaringType`, Java `getDeclaringClass()`, Python `__module__` and `__qualname__`, and stack traces.
+Moving a member (Move static member, Convert static method to instance method) changes the type or module that reflection reports for it: C# `DeclaringType`, Java `getDeclaringClass()`, Python `__module__` and `__qualname__`, and stack traces.
 Python's `pickle` stores functions and classes by module and qualified name, so pickles written before the move may no longer load.
 
 ## Changed signatures and external callers
 
-Make method static, Move static method to instance method, and Extract object from arguments change a method's signature, and Move static member changes its location.
+Make method static, Convert static method to instance method, and Extract object from arguments change a method's signature, and Move static member changes its location.
 The workspace is treated as the whole program: callers outside it (other repositories, compiled binaries that are not rebuilt) are not updated.
 When the method is visible outside the workspace (public in a library, exported from a package), the tool reports a warning.
 

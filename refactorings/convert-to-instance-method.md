@@ -1,4 +1,4 @@
-# Move static method to instance method
+# Convert static method to instance method
 
 Turn a static method (or free function) into an instance method on the type of one of its parameters.
 That parameter becomes the receiver (`this`, `self`), and every call site passes it as the receiver instead of as an argument.

@@ -2,7 +2,7 @@
 
 Move a static member (a member that needs no instance) from one type or module to another, and update every reference to it, across the whole workspace.
 
-Together with [Make method static](make-method-static.md) and [Move static method to instance method](move-to-instance-method.md), this gives Fowler's *Move Method*.
+Together with [Make method static](make-method-static.md) and [Convert static method to instance method](convert-to-instance-method.md), this gives Fowler's *Move Method*.
 
 ## Input
 
