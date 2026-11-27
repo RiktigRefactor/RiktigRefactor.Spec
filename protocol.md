@@ -76,11 +76,34 @@ There is no sequential mode.
 - **Swaps** (`a→b`, `b→a`) are valid under snapshot semantics and are supported.
 
 Each action is checked against the snapshot, and then the **combined result** gets a final re-binding check.
-Failures report which actions interact.
+Failures report which actions interact (see `conflictsWith` below).
 
 ### Failure modes
 
 - `--atomic` (default): if any action refuses or conflicts, nothing is applied.
 - `--best-effort`: apply all actions that succeed without conflict; report the rest.
 
-Output: one result per input line, in order, plus an overall status.
+### Output
+
+```json
+{
+  "status": "partial",
+  "workspaceRoot": "/home/ana/shop",
+  "edits": [ ... ],
+  "results": [
+    { "line": 1, "refactoring": "rename", "status": "success", "edits": [ ... ] },
+    { "line": 2, "refactoring": "rename", "status": "refused", "reasons": [ ... ], "conflictsWith": [1] }
+  ]
+}
+```
+
+- `status` is `success` when every action is applied, `partial` when `--best-effort` applies only some of them, and `refused` when nothing is applied.
+- `edits` are the combined edits to apply, relative to the original files.
+  They are empty when `status` is `refused`.
+- `results` has one entry per request, in input order.
+  Each holds the request's 1-based `line` in the input, its `refactoring`, and the protocol [result](#result) for that action, without `workspaceRoot`.
+  A successful action's `edits` are its share of the combined edits.
+- In a refused atomic batch, the actions that would have succeeded still report `success` and their edits, so a client can see which actions caused the refusal.
+- An action refused because it conflicts with others has `conflictsWith`: the `line`s of those actions.
+  When two actions conflict, the one later in the input is refused, so dropping it resolves that conflict.
+  The reason codes for conflicts are language-specific, like every other code.
