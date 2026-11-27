@@ -10,10 +10,10 @@ Pattern: `RiktigRefactor.{Language}`, matching the repo names, adapted to each e
 
 | Language | Library | Tool (CLI + MCP) |
 |---|---|---|
-| C# | NuGet `RiktigRefactor.CSharp` | dotnet tool `RiktigRefactor.CSharp.Tool`, command `riktig-cs` |
-| Python | PyPI `riktigrefactor-python`, import `riktigrefactor` | same package, command `riktig-py` |
-| C++ | `riktigrefactor-cpp` (vcpkg, Conan) | binary `riktig-cpp` (Homebrew, release binaries) |
-| VS Code | extension `riktigrefactor.vscode` | — |
+| C# | NuGet `RiktigRefactor` | dotnet tool `RiktigRefactor.CSharp.Tool`, command `riktig-cs` |
+| Python | PyPI `riktigrefactor`, import `riktigrefactor` | same package, command `riktig-py` |
+| C++ | `riktigrefactor` (vcpkg, Conan) | binary `riktig-cpp` (Homebrew, release binaries) |
+| Java | [TBD] | riktig-java |
 
 Reserve the `RiktigRefactor.*` prefix on NuGet.
 
